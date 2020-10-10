@@ -1,4 +1,4 @@
-# Python Excel Template Code
+# Python Excel Writer Template Code
 A python template code that can save unicode data in xls file with headers included
 ### Requirements
 <pre>pip3 install xlutils</pre>
