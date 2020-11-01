@@ -16,7 +16,7 @@ def saveData(dataset, output_file):
         rb = xlrd.open_workbook(output_file,formatting_info=True)
         sht = rb.sheet_by_index(0)
         lastRows = sht.nrows
-        wb = copy.copy(rb)
+        wb = copy(rb)
         sheet = wb.get_sheet(0)
         pos = 0
         for data in dataset:
