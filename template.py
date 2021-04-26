@@ -13,16 +13,22 @@ def saveData(dataset, output_file):
     ws = wb.add_sheet("Sheet 1")
     if os.path.exists(output_file):
         # old file, get last untouched row and start writing data
-        rb = xlrd.open_workbook(output_file,formatting_info=True)
-        sht = rb.sheet_by_index(0)
-        lastRows = sht.nrows
-        wb = copy(rb)
-        sheet = wb.get_sheet(0)
-        pos = 0
-        for data in dataset:
-            sheet.write(lastRows, pos, data)
-            pos += 1
-        wb.save(output_file)
+        while True:
+            try:
+                rb = xlrd.open_workbook(
+                    output_file, formatting_info=True, on_demand=False)
+                sht = rb.sheet_by_index(0)
+                lastRows = sht.nrows
+                wb = copy(rb)
+                sheet = wb.get_sheet(0)
+                pos = 0
+                for data in dataset:
+                    sheet.write(lastRows, pos, data)
+                    pos += 1
+                wb.save(output_file)
+                break
+            except OSError:
+                pass
     else:
         # new file, create the headers
         pos = 0
