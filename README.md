@@ -1,5 +1,7 @@
 # Python Excel Writer Template Code
 A python template code that can save unicode data in xls/xlsx file with headers included
+# Performance Info
+the xlsx version is slower than the xls one, use wisely
 ### Requirements
 For the xls version script:
 <pre>pip3 install xlutils</pre> 
